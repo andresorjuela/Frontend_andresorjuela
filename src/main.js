@@ -18,9 +18,9 @@ const router = new VueRouter({
   routes
 })
 
-const OPEN_ROUTES = ['About','Login','Password','Unauthorized','Products'];
+const OPEN_ROUTES = ['About','Login','Password','Unauthorized','Products','Home'];
 const ADMIN_ROUTES = ['AdminHome',];
-const USER_ROUTES = ['Billing','Connections','Home','Settings',];
+const USER_ROUTES = ['Billing','Connections','Settings',];
 
 router.beforeEach((to, from, next) => {
   loadAuthState(store); // for every route, the auth state is re-inspected and validated
@@ -28,11 +28,12 @@ router.beforeEach((to, from, next) => {
   let roles = user ? user.roles || [] : [];
   console.debug(`roles: ${roles.length > 0 ? roles.join(',') : '(none)'} --> requesting: ${to.name}`)
   
-  if(to.path===from.path){ 
-    console.debug(`  The paths already match.`)
-    next(false); 
+  // if(to.path===from.path){ 
+  //   console.debug(`  The paths already match.`)
+  //   next(false); 
   
-  } else  if(OPEN_ROUTES.includes(to.name) ){
+  // } else  
+  if(OPEN_ROUTES.includes(to.name) ){
     console.debug(`  It's an open route.`)
     next();
   
@@ -61,6 +62,7 @@ new Vue({
   store,
   data: {
     open_routes: OPEN_ROUTES,
+    variable1: "Test variable 1"
   },
   render: h => h(App)
 }).$mount('#app')

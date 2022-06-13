@@ -59,10 +59,9 @@ const routes = [
       },
     ] 
   },
-  // protected views...
   {
     path: '/',
-    component: authLayout(),
+    component: publicLayout(),
     children:[
       {
         path: '',
@@ -71,6 +70,7 @@ const routes = [
       },
     ] 
   },
+  // protected views...
   {
     path: '/admin',
     component: authLayout(),

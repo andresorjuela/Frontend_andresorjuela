@@ -5,7 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build-test": "vue-cli-service build --mode test",
+    "package": "npm run build-test",
+    "deploy": "aws --profile kartune s3 sync ./dist s3://andresorjuela.com"
   },
   "dependencies": {
     "axios": "^0.21.4",
